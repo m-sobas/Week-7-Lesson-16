@@ -1,0 +1,99 @@
+﻿<mah:MetroWindow x:Class="Diary.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns:local="clr-namespace:Diary"
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        Title="Dziennik ucznia" Height="450" Width="900
+                 ">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="287*"/>
+            <ColumnDefinition Width="142*"/>
+            <ColumnDefinition Width="291*"/>
+            <ColumnDefinition Width="80*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <StackPanel 
+            Orientation="Horizontal" Grid.ColumnSpan="4" Margin="10,10,10,10">
+
+            <Button 
+                Command="{Binding AddStudentCommand}" 
+                Style="{DynamicResource MahApps.Styles.Button.Circle}" Background="#FFBF0000" 
+                Content="Dodaj" 
+                Height="50" 
+                Width="100" 
+                Margin="5" />
+
+            <Button 
+                Command="{Binding EditStudentCommand}" 
+                CommandParameter="{Binding SelectedStudent}"
+                Style="{DynamicResource MahApps.Styles.Button.Circle}" Background="#FFBF0000" 
+                Content="Edytuj" 
+                Height="50" 
+                Width="100" 
+                Margin="5" />
+
+            <Button 
+                Command="{Binding DeleteStudentCommand}" 
+                Style="{DynamicResource MahApps.Styles.Button.Circle}" Background="#FFBF0000" 
+                Content="Usuń" 
+                Height="50" 
+                Width="100" 
+                Margin="5" />
+
+            <ComboBox 
+                Height="25" 
+                Width="150" 
+                Margin="5" 
+                ItemsSource="{Binding Groups}"
+                SelectedValue="{Binding SelectedGroupId}"
+                DisplayMemberPath="Name"
+                SelectedValuePath="Id"
+            />
+
+            <Button 
+                Command="{Binding RefreshStudentsCommand}" 
+                Style="{DynamicResource MahApps.Styles.Button.Circle}" Background="#FF003192" 
+                Content="Odśwież" 
+                Height="50" 
+                Width="100" 
+                Margin="5" />
+
+        </StackPanel>
+
+        <DataGrid 
+            Grid.Row="1"
+            Margin="5"
+            Grid.ColumnSpan="4"
+            ItemsSource="{Binding Students}"
+            SelectedItem="{Binding SelectedStudent}"           
+            CanUserAddRows="False"
+            IsReadOnly="True"
+            SelectionMode="Single"
+            AutoGenerateColumns="False" >
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Id}" />
+                <DataGridTextColumn Binding="{Binding FirstName}" Header="Imię"/>
+                <DataGridTextColumn Binding="{Binding LastName}" Header="Nazwisko"/>
+                <DataGridTextColumn Binding="{Binding Comments}" Header="Komentarz"/>
+                <DataGridTextColumn Binding="{Binding Math}" Header="Matematyka"/>
+                <DataGridTextColumn Binding="{Binding Technology}" Header="Technologia"/>
+                <DataGridTextColumn Binding="{Binding Physics}" Header="Fizyka"/>
+                <DataGridTextColumn Binding="{Binding PolishLang}" Header="Język polski"/>
+                <DataGridTextColumn Binding="{Binding ForeignLang}" Header="Język obcy"/>
+                <DataGridCheckBoxColumn Binding="{Binding Activities}" Header="Dodatkowe"/>
+                <DataGridTextColumn Binding="{Binding Group.Name}" Header="Grupa"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+    </Grid>
+</mah:MetroWindow>
+
