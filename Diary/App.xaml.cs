@@ -8,12 +8,16 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace Diary.Views
+namespace Diary
 {
     /// <summary>
     /// Logika interakcji dla klasy App.xaml
     /// </summary>
     public partial class App : Application
     {
+        private void Application_DispatcherUnhandledException(object sender, System.Windows.Threading.DispatcherUnhandledExceptionEventArgs e)
+        {
+
+        }
     }
 }
