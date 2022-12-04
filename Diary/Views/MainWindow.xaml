@@ -5,11 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         xmlns:local="clr-namespace:Diary"
-        xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        Title="Dziennik ucznia" Height="450" Width="900
-                 ">
+        Title="Dziennik ucznia" Height="450" Width="900">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="287*"/>
@@ -45,6 +43,14 @@
                 Command="{Binding DeleteStudentCommand}" 
                 Style="{DynamicResource MahApps.Styles.Button.Circle}" Background="#FFBF0000" 
                 Content="Usuń" 
+                Height="50" 
+                Width="100" 
+                Margin="5" />
+
+            <Button 
+                Command="{Binding DatabaseConfigCommand}" 
+                Style="{DynamicResource MahApps.Styles.Button.Circle}" Background="#008000" 
+                Content="Ustawienia" 
                 Height="50" 
                 Width="100" 
                 Margin="5" />

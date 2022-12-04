@@ -1,0 +1,19 @@
+﻿<Window x:Class="Diary.Views.SplashScreenView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Diary.Views"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        Title="SplashScreenView" Height="320" Width="400" Background="White" BorderThickness="10" BorderBrush="#BE1707">
+    <Grid>
+        <StackPanel Margin="20">
+        <Image Source="/Pictures/Logo.png" Width="200"></Image>
+            <TextBox FontSize="36" HorizontalAlignment="Center" Background="White" Foreground="Black" FontWeight="Bold" BorderThickness="0">
+                DIARY v1.00
+            </TextBox>
+        </StackPanel>
+    </Grid>
+</Window>
