@@ -26,27 +26,41 @@ namespace Diary.ViewModels
 {
     public class MainViewModel : ViewModelBase
     {
+        private static Mutex _mutex = null;
         private Repository _repository = new Repository();
-
 
         public MainViewModel()
         {
+            const string appName = "Diary";
+            bool createdNew;
+
+            _mutex = new Mutex(true, appName, out createdNew);
+
+            if (!createdNew)
+            {
+                //MessageBox.Show("Aplikacja jest już uruchomiona!");
+                Application.Current.Shutdown();
+                return;
+            }
+
             //using (var context = new ApplicationDbContext())
             //{
             //    var students = context.Students.ToList();
             //}
 
+            var splashScreenWindow = new SplashScreenView();
+            splashScreenWindow.Show();
+
             if (CheckConnection())
             {
-                var splashScreenWindow = new SplashScreenView();
-                splashScreenWindow.Show();
-
-                Thread.Sleep(3000);
+                Thread.Sleep(2000);
 
                 splashScreenWindow.Close();
             }
             else
             {
+                splashScreenWindow.Close();
+
                 var dialog = MessageBox.Show("Nie można połączyć się z bazą danych.\nCzy chcesz na nowo skonfigurować połączenie?", "Błąd połączenia", MessageBoxButton.OKCancel, MessageBoxImage.Error);
 
                 if (dialog != MessageBoxResult.OK)
@@ -235,7 +249,7 @@ namespace Diary.ViewModels
         {
             try
             {
-                using (var context = new ApplicationDbContext(DBConnection.ConnectionString))
+                using (var context = new ApplicationDbContext())
                 {
                     context.Database.Connection.Open();
                     context.Database.Connection.Close();

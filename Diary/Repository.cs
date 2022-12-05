@@ -21,7 +21,7 @@ namespace Diary
     {
         public List<Group> GetGroups()
         {
-            using (var context = new ApplicationDbContext(DBConnection.ConnectionString))
+            using (var context = new ApplicationDbContext())
             {
                 return context.Groups.ToList();
             }
@@ -29,7 +29,7 @@ namespace Diary
 
         public List<StudentWrapper> GetStudents(int groupId)
         {
-            using (var context = new ApplicationDbContext(DBConnection.ConnectionString))
+            using (var context = new ApplicationDbContext())
             {
                 var students = context.Students
                     .Include(x => x.Group)
@@ -51,7 +51,7 @@ namespace Diary
 
         public void DeleteStudent(int id)
         {
-            using (var context = new ApplicationDbContext(DBConnection.ConnectionString))
+            using (var context = new ApplicationDbContext())
             {
                 var studentToDelete = context.Students.Find(id);
                 context.Students.Remove(studentToDelete);
@@ -64,7 +64,7 @@ namespace Diary
             var student = studentWrapper.ToDao();
             var ratings = studentWrapper.ToRatingDao();
 
-            using (var context = new ApplicationDbContext(DBConnection.ConnectionString))
+            using (var context = new ApplicationDbContext())
             {
                 var dbStudent = context.Students.Add(student);
 
@@ -83,7 +83,7 @@ namespace Diary
             var student = studentWrapper.ToDao();
             var ratings = studentWrapper.ToRatingDao();
 
-            using (var context = new ApplicationDbContext(DBConnection.ConnectionString))
+            using (var context = new ApplicationDbContext())
             {
                 UpdateStudentProperties(context, student);
 

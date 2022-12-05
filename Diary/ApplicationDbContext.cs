@@ -17,10 +17,9 @@ namespace Diary
         //{
         //}
 
-        public ApplicationDbContext(string connection)
-            : base(connection)
+        public ApplicationDbContext()
+            : base(DBConnection.ConnectionString)
         {
-            //MessageBox.Show(connection);
         }
 
         public DbSet<Student> Students { get; set; }

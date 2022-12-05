@@ -7,13 +7,12 @@
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
+        ResizeMode="NoResize"
         Title="SplashScreenView" Height="320" Width="400" Background="White" BorderThickness="10" BorderBrush="#BE1707">
-    <Grid>
         <StackPanel Margin="20">
         <Image Source="/Pictures/Logo.png" Width="200"></Image>
             <TextBox FontSize="36" HorizontalAlignment="Center" Background="White" Foreground="Black" FontWeight="Bold" BorderThickness="0">
                 DIARY v1.00
             </TextBox>
         </StackPanel>
-    </Grid>
 </Window>
